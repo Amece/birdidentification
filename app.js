@@ -3,7 +3,7 @@
 let mobilenet;
 let classifier;
 let video;
-let label = 'loading model';
+let label = 'model is not trained yet';
 let merelButton;
 let huismusButton;
 let spreeuwButton;
@@ -11,17 +11,17 @@ let trainButton;
 
 function modelReady() {
     console.log('model is ready');
-    classifier.load('model.json', customModelReady);
+    // classifier.load('model.json', customModelReady);
 }
 
-function customModelReady() {
-    console.log('bird model is ready');
-    label = 'model ready';
-}
+// function customModelReady() {
+//     console.log('bird model is ready');
+//     label = 'model ready';
+// }
 
 function videoReady() {
     console.log('Video is ready!!!');
-    classifier.classify(gotResults);
+    // classifier.classify(gotResults);
 }
 
 
@@ -35,30 +35,30 @@ function setup() {
 
     // Training Code \\
   //
-//     merelButton = createButton('merel');
-//     merelButton.mousePressed(function() {
-//         classifier.addImage('merel');
-//     });
+    merelButton = createButton('merel');
+    merelButton.mousePressed(function() {
+        classifier.addImage('merel');
+    });
 
-//     huismusButton = createButton('huismus');
-//     huismusButton.mousePressed(function() {
-//         classifier.addImage('huismus');
-//     });
+    huismusButton = createButton('huismus');
+    huismusButton.mousePressed(function() {
+        classifier.addImage('huismus');
+    });
 
-//     spreeuwButton = createButton('spreeuw');
-//     spreeuwButton.mousePressed(function() {
-//         classifier.addImage('spreeuw');
-//     });
+    spreeuwButton = createButton('spreeuw');
+    spreeuwButton.mousePressed(function() {
+        classifier.addImage('spreeuw');
+    });
 
-//     trainButton = createButton('train');
-//     trainButton.mousePressed(function() {
-//         classifier.train(whileTraining);
-//     });
+    trainButton = createButton('train');
+    trainButton.mousePressed(function() {
+        classifier.train(whileTraining);
+    });
 
-//     saveButton = createButton('save');
-//     saveButton.mousePressed(function() {
-//         classifier.save();
-//   });
+    saveButton = createButton('save');
+    saveButton.mousePressed(function() {
+        classifier.save();
+  });
 
 }
 
@@ -70,14 +70,14 @@ function draw() {
     text(label, 10, height - 10);
 }
 
-// function whileTraining(loss) {
-//   if (loss == null) {
-//     console.log('Training Complete');
-//     classifier.classify(gotResults);
-//   } else {
-//     console.log(loss);
-//   }
-// }
+function whileTraining(loss) {
+  if (loss == null) {
+    console.log('Training Complete');
+    classifier.classify(gotResults);
+  } else {
+    console.log(loss);
+  }
+}
 
 function gotResults(error, result) {
     if (error) {
