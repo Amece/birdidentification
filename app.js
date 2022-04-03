@@ -21,7 +21,7 @@ function customModelReady() {
 
 function videoReady() {
     console.log('Video is ready!!!');
-    
+    classifier.classify(gotResults);
 }
 
 
