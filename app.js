@@ -17,11 +17,12 @@ function modelReady() {
 function customModelReady() {
     console.log('bird model is ready');
     label = 'model ready';
+    classifier.classify(gotResults);
 }
 
 function videoReady() {
     console.log('Video is ready!!!');
-    classifier.classify(gotResults);
+    
 }
 
 
